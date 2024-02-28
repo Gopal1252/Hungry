@@ -1,4 +1,4 @@
-import logo from "../public/images/logo.svg"; 
+import logo from "../../public/images/logo.svg"; 
 import { PiShoppingCart } from "react-icons/pi";
 import SearchBar from "./SearchBar";
 
