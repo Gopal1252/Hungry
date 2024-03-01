@@ -1,9 +1,6 @@
-import Header from "./Header"
-
 const About = () => {
     return (
         <div>
-            <Header />
             <div className="text-xl mx-40 flex flex-col items-center mt-10">
                 <h1 className="text-4xl mb-5 font-bold">Who We Are</h1>
                 <p className="mb-3 text-justify w-[60rem]">

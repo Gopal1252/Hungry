@@ -2,6 +2,7 @@ import { useState } from "react";
 import logo from "../../public/images/logo.svg"; 
 import { PiShoppingCart } from "react-icons/pi";
 import { CiUser } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 
 
@@ -27,9 +28,9 @@ const Header = () => {
 
             <div className="nav-items">
                 <ul className="flex text-lg font-xl items-center">
-                    <li className="mr-5 pr-5 cursor-pointer">Home</li>
-                    <li className="mr-5 pr-5 cursor-pointer">About Us</li>
-                    <li className="mr-5 pr-5 cursor-pointer">Contact Us</li>
+                    <li className="mr-5 pr-5 cursor-pointer"><Link to="/">Home</Link></li>
+                    <li className="mr-5 pr-5 cursor-pointer"><Link to="/about">About Us</Link></li>
+                    <li className="mr-5 pr-5 cursor-pointer"><Link to="/contact">Contact Us</Link></li>
                     <li className="mr-5 pr-5 cursor-pointer flex"><PiShoppingCart className="text-2xl mr-1" />Cart</li>
                     <button className="px-3 py-1 mb-1 flex border border-gray-500 rounded-full hover:bg-gray-100 cursor-pointer" onClick = {handleClick}><CiUser className="text-2xl" />{btnName}</button>
                 </ul>

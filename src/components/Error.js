@@ -9,7 +9,7 @@ const Error = () => {
     <div className="flex flex-col items-center mt-10">
         <div className="w-[35rem]">
             <img src={error404} className="p-5"></img>
-        </div>
+        </div> 
         <h1 className="text-9xl font-extrabold">{err.status}</h1>
         <h1 className="text-xl mb-5">{err.statusText}</h1>
         <h2 className="text-4xl font-bold text-center">Oops..., it seems something<br/> went wrong</h2>
