@@ -1,11 +1,27 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import CardSkeleton from "./CardSkeleton";
+import { IoIosSearch } from "react-icons/io";
 
 const Body = () => {
 
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
+    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    const [searchText,setSearchText] = useState("");
+
+    const handleSearch = () => {
+        const filteredList = listOfRestaurants.filter(
+            (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()) || res.info.cuisines.join(", ") .toLowerCase().includes(searchText.toLowerCase()) 
+        );
+
+        setFilteredRestaurants(filteredList);
+    }
+
+    const handleChange = (e) => {
+        setSearchText(e.target.value);
+    }
 
     useEffect(() => {
         fetchData();
@@ -19,26 +35,34 @@ const Body = () => {
         const json = await data.json();
         // optional chaining
         setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setIsLoading(false)
     }
 
     return (
-        <div className="body mx-40 my-5">
+        <div className="body mx-48 my-5">
+            <div className="flex justify-center m-5 search">
+                <div className="w-[40rem] h-[4rem] text-lg border-2 border-[#e8e8e8] rounded-full shadow-md flex justify-between items-center px-5 my-2">
+                    <input type="text" value={searchText} onChange={handleChange} className="searchBox w-[36rem] outline-none" placeholder="Search for restaurant, cuisine or a dish"></input>
+                    <button onClick={handleSearch}><IoIosSearch className="text-3xl" /></button>
+                </div>
+            </div>
+
             <div className="fliter">
                 <button 
-                className="filter-btn px-3 py-2 border border-gray-500 text-sm rounded-full my-2 mx-3 hover:bg-gray-100 cursor-pointer"
+                className="filter-btn px-5 py-2 border border-gray-500 text-sm rounded-full my-2 mx-3 hover:bg-gray-100 cursor-pointer"
                 onClick={()=>{
                     const filtered_List  = listOfRestaurants.filter((res) => res.info.avgRating>=4); 
-                    setListOfRestaurants(filtered_List);
+                    setFilteredRestaurants(filtered_List);
                 }}
                 >
                     Top Rated Restautants
                 </button>
             </div>
-            <div className="restaurant-continer flex flex-wrap justify-evenly">
+            <div className="restaurant-continer flex flex-wrap justify-normal">
                 {isLoading && <CardSkeleton cards={9} />}
                 { 
-                  listOfRestaurants.map((restaurant) => (<RestaurantCard key={restaurant.info.id} resData={restaurant}/>))
+                  filteredRestaurants?.map((restaurant) => (<RestaurantCard key={restaurant.info.id} resData={restaurant}/>))
                 }
             </div>
         </div>

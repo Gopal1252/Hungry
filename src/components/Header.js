@@ -2,12 +2,13 @@ import { useState } from "react";
 import logo from "../../public/images/logo.svg"; 
 import { PiShoppingCart } from "react-icons/pi";
 import { CiUser } from "react-icons/ci";
-import SearchBar from "./SearchBar";
+
 
 
 const Header = () => {
 
-    const [btnName, setBtnName] = useState("Sign In");
+    const [btnName,setBtnName] = useState("Sign In");
+
 
     const handleClick = () => {
         if(btnName == "Sign In"){
@@ -23,9 +24,7 @@ const Header = () => {
             <div className="logo-container">
                 <img className="logo w-64 cursor-pointer" src={logo} />
             </div>
-            <div>
-                <SearchBar />
-            </div>
+
             <div className="nav-items">
                 <ul className="flex text-lg font-xl items-center">
                     <li className="mr-5 pr-5 cursor-pointer">Home</li>

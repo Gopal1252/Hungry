@@ -1,3 +1,3 @@
 # HUNGRY
 
-A Food Delivery Application!
+A Food Ordering Application!
