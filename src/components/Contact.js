@@ -2,10 +2,6 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 import { useState } from 'react'
 
-// function classNames(...classes) {
-//   return classes.filter(Boolean).join(' ')
-// }
-
 const Contact = () => {
     const [agreed, setAgreed] = useState(false)
     return (
