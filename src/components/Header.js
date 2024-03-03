@@ -23,7 +23,7 @@ const Header = () => {
     return (
         <div className="header flex justify-between items-center mx-16 py-5 px-3">
             <div className="logo-container">
-                <img className="logo w-64 cursor-pointer" src={logo} />
+            <Link to="/"><img className="logo w-64 cursor-pointer" src={logo} /></Link>
             </div>
 
             <div className="nav-items">

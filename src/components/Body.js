@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import CardSkeleton from "./CardSkeleton";
 import { IoIosSearch } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Body = () => {
 
@@ -62,10 +63,12 @@ const Body = () => {
             <div className="restaurant-continer flex flex-wrap justify-normal">
                 {isLoading && <CardSkeleton cards={9} />}
                 { 
-                  filteredRestaurants?.map((restaurant) => (<RestaurantCard key={restaurant.info.id} resData={restaurant}/>))
+                    filteredRestaurants?.map((restaurant) => (
+                        <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>
+                    ))
                 }
             </div>
-        </div>
+        </div> 
     )
 }
 

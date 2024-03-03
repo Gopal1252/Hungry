@@ -1,5 +1,6 @@
 import { useRouteError } from "react-router-dom"
 import error404 from "../../public/images/error.png"
+import { Link } from "react-router-dom";
 
 const Error = () => {
 
@@ -13,7 +14,7 @@ const Error = () => {
         <h1 className="text-9xl font-extrabold">{err.status}</h1>
         <h1 className="text-xl mb-5">{err.statusText}</h1>
         <h2 className="text-4xl font-bold text-center">Oops..., it seems something<br/> went wrong</h2>
-        <button className="mt-5 text-2xl border-2 border-black px-4 py-2 rounded-2xl hover:bg-gray-100">Go Home</button>
+        <button className="mt-5 text-2xl border-2 border-black px-4 py-2 rounded-2xl hover:bg-gray-100"><Link to="/">Go Home</Link></button>
     </div>
   )
 }
