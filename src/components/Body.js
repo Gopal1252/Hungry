@@ -34,6 +34,9 @@ const Body = () => {
         );
 
         const json = await data.json();
+
+        console.log(json.data);
+
         // optional chaining
         setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);

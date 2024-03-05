@@ -22,7 +22,10 @@ const RestaurantMenu = () => {
     if(resInfo === null) return <CardSkeleton />;
 
     const { name, cuisines, cloudinaryImageId, costForTwoMessage} = resInfo?.cards[0]?.card?.card?.info;
-    const { itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+    const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+
+    console.log(resInfo);
+    // console.log(itemCards);
 
     return (
         <div className="">
@@ -30,6 +33,13 @@ const RestaurantMenu = () => {
             <h3>{cuisines.join(", ")}</h3>
             <h3>{costForTwoMessage}</h3>
             <h2 className="text-xl">Menu</h2>
+            <ul>
+                {itemCards?.map((item) => (
+                    <li>
+                        {item.card.info.name} - Rs{item.card.info.price/100  || item.card.info.defaultPrice/100}
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }
