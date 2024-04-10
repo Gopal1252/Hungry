@@ -1,7 +1,10 @@
+import User from './User';
+import UserClass from './UserClass';
+
 const About = () => {
     return (
         <div>
-            <div className="text-xl mx-40 flex flex-col items-center mt-10">
+            <div className="text-xl mx-40 my-20 flex flex-col items-center mt-10">
                 <h1 className="text-4xl mb-5 font-bold">Who We Are</h1>
                 <p className="mb-3 text-justify w-[60rem]">
                 Welcome to <b>HUNGRY</b>, where culinary delights meet digital convenience! Our passion for good food and seamless technology converge to create an unparalleled dining experience for you.
@@ -21,6 +24,10 @@ const About = () => {
                 <p className="mb-3 text-justify w-[60rem]">
                 Join us on a culinary journey where convenience meets flavor, and let <b>HUNGRY</b> be your trusted companion for all your dining needs. Thank you for choosing us – we look forward to serving you a delightful and memorable dining experience, one order at a time!
                 </p>
+            </div>
+            
+            <div className='my-5 mx-5 p-3 border-2 border-black'>
+            <UserClass name={"Gopal Gupta"}/>
             </div>
         </div>
     );
