@@ -57,7 +57,7 @@ const Body = () => {
     }
 
     return (
-        <div className="body mx-48 my-5">
+        <div className="w-[80%] mx-auto my-5">
             <div className="flex justify-center m-5 search">
                 <div className="w-[40rem] h-[4rem] text-lg border-2 border-[#e8e8e8] rounded-full shadow-md flex justify-between items-center px-5 my-2">
                     <input type="text" value={searchText} onChange={handleChange} className="searchBox w-[36rem] border-transparent focus:border-transparent focus:ring-0" placeholder="Search for restaurant, cuisine or a dish"></input>

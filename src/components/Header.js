@@ -30,7 +30,7 @@ const Header = () => {
                     <Link to="/"><img className="logo w-64 cursor-pointer" src={logo} /></Link>
                 </div>
 
-                <div className={visible?"top-[9%]":"null" + "nav-items absolute md:static bg-white min-h-[60vh] md:min-h-fit left-0 top-[-100%] w-full md:w-auto flex items-center lg:pr-32"}>
+                <div className={visible?"top-[9%]":"" + "nav-items absolute md:static bg-white min-h-[60vh] md:min-h-fit left-0 top-[-100%] w-full md:w-auto flex items-center lg:pr-32"}>
                     <ul className="flex flex-col md:flex-row text-md lg:text-lg md:items-center gap-8 md:gap-[4vw]">
                         <li className="cursor-pointer"><Link to="/">Home</Link></li>
                         <li className="cursor-pointer"><Link to="/about">About</Link></li>
