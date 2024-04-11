@@ -10,10 +10,7 @@ const ItemList = ({items}) => {
                 {items.map((item) => (
                     <div key={item.card.info.id} className="grid grid-cols-5 pt-3 pb-10 mb-1 border-b-2">
                          <div className="col-start-1 col-span-4">
-                            <div>
-                                {item.card.info.isVeg? <img className="w-4" src={veg}/> : <img className="w-5" src={nonveg}/>}
-                            
-                            </div>
+                            <div>{item.card.info.isVeg? <img className="w-4" src={veg}/> : <img className="w-5" src={nonveg}/>}</div>
                             <div className="font-semibold">{item.card.info.name}</div>
                             <div>₹{item.card.info.price ? (item.card.info.price/100.00).toFixed(2) : (item.card.info.defaultPrice/100.00).toFixed(2)}</div>
                             <div className="text-sm text-gray-500 max-w-[80%]">{item.card.info.description}</div>
