@@ -6,6 +6,7 @@ import star from "../../public/images/star2.png";
 import { LuDot } from "react-icons/lu";
 import { CiLocationOn } from "react-icons/ci";
 import { CiClock2 } from "react-icons/ci";
+import { useState } from "react";
 
 
 const RestaurantMenu = () => {
@@ -14,9 +15,11 @@ const RestaurantMenu = () => {
 
     const resInfo = useRestaurantMenu(resId);
 
+    const [showIndex, setShowIndex] = useState(0);
+
+
     if(resInfo === null) return <CardSkeleton />;
     // console.log(resInfo);
-
 
     const { name, avgRating, totalRatingsString, sla, areaName, cuisines, cloudinaryImageId, costForTwoMessage} = resInfo?.cards[2]?.card?.card?.info;
     const { itemCards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card;
@@ -63,8 +66,13 @@ const RestaurantMenu = () => {
 
                 {/* {Categories Accordion} */}
                 <div>
-                    {categories.map((category) => (
-                        <RestaurantCategory key={category.card?.card?.title} data={category?.card?.card}/>
+                    {categories.map((category, index) => (
+                        <RestaurantCategory 
+                            key={category.card?.card?.title} 
+                            data={category?.card?.card} 
+                            showItems={index === showIndex ? true : false} 
+                            setShowIndex={() => setShowIndex(index)}
+                        />
                     ))}
                 </div>
             </div>

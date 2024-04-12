@@ -10,7 +10,7 @@ const Header = () => {
     const [btnName,setBtnName] = useState("Sign In");
     const handleClick = () => {
         if(btnName == "Sign In"){
-            setBtnName("Sign Out");
+            setBtnName("Sign out");
         }
         else{
             setBtnName("Sign In");

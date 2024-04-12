@@ -2,12 +2,14 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import ItemList from "./ItemList";
 import { useState } from "react";
 
-const RestaurantCategory = ({data}) => {
+const RestaurantCategory = ({data, showItems, setShowIndex}) => {
     // console.log(data)
 
-    const [showItems, setShowItems] = useState(false);
+    const [show, setShow] = useState(false);
+
     const handleClick = () => {
-        setShowItems(!showItems);
+            setShow(!show);
+            setShowIndex();
     }
 
     return (
@@ -18,7 +20,7 @@ const RestaurantCategory = ({data}) => {
                     <div><MdOutlineKeyboardArrowDown className="text-2xl" /></div>
                 </div>
                 <div className="px-3">
-                    {showItems && <ItemList items={data.itemCards} />}
+                    {showItems && show && <ItemList items={data.itemCards} />}
                 </div>
             </div>
             <div className="h-4 bg-gray-200 rounded px-3"></div>
