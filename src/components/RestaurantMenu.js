@@ -22,7 +22,7 @@ const RestaurantMenu = () => {
     // console.log(resInfo);
 
     const { name, avgRating, totalRatingsString, sla, areaName, cuisines, cloudinaryImageId, costForTwoMessage} = resInfo?.cards[2]?.card?.card?.info;
-    const { itemCards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card;
+    // const { itemCards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card;
 
     const categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
 
@@ -72,7 +72,7 @@ const RestaurantMenu = () => {
                             data={category?.card?.card} 
                             showItems={index === showIndex ? true : false} 
                             setShowIndex={() => setShowIndex(index)}
-                        />
+                        /> 
                     ))}
                 </div>
             </div>

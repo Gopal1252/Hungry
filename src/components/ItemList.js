@@ -1,10 +1,20 @@
 import veg from "../../public/images/veg.png";
 import nonveg from "../../public/images/non-veg.png";
 import { CDN_URL } from "../utils/constants";
+import { UseDispatch, useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({items}) => {
-    console.log(items);
-    return (
+    // console.log(items);
+
+    const dispatch = useDispatch();
+
+    const handleAddItem = (item) => {
+        //dispatch an action
+        dispatch(addItem(item));
+    }
+
+    return ( 
         <div>
             <div>
                 {items.map((item) => (
@@ -17,8 +27,9 @@ const ItemList = ({items}) => {
                          </div>
                          <div className="col-start-5 col-span-1 text-center">
                              <img className="rounded-xl object-scale-down" src={CDN_URL + item.card.info.imageId} />
-                             <button className="border-2 rounded-xl px-3 sm:px-5 md:px-7 py-1 text-sm sm:text-md md:text-lg font-bold text-green-500 mt-[-12] bg-white z-100">ADD</button>
+                             <button onClick={() => handleAddItem(item)} className="border-2 rounded-xl px-3 sm:px-5 md:px-7 py-1 text-sm sm:text-md md:text-lg font-bold text-green-500 mt-[-12] bg-white z-100">ADD</button>
                          </div>
+                         {/* <div className="col-start-1 col-span-5 h-[0.1rem] bg-gray-300"></div> */}
                     </div>
                 ))}
             </div>

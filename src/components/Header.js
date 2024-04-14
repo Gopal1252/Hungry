@@ -4,6 +4,7 @@ import { PiShoppingCart } from "react-icons/pi";
 import { CiUser } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
+import { UseSelector, useSelector } from "react-redux";
 
 const Header = () => {
 
@@ -23,6 +24,9 @@ const Header = () => {
         setVisible(!visible);
     }
 
+    //subscribing to the store using a Selector
+    const cartItems = useSelector((store) => store.cart.items);
+
     return (
         <div className="py-5 shadow-xl">
             <div className="flex justify-between w-[92%] mx-auto">
@@ -35,7 +39,7 @@ const Header = () => {
                         <li className="cursor-pointer"><Link to="/">Home</Link></li>
                         <li className="cursor-pointer"><Link to="/about">About</Link></li>
                         <li className="cursor-pointer"><Link to="/contact">Contact</Link></li>
-                        <li className="cursor-pointer flex"><PiShoppingCart className="text-2xl mr-1" />Cart</li>
+                        <li className="cursor-pointer"><Link className="flex" to="/cart"><PiShoppingCart className="text-2xl mr-1" />Cart ({cartItems.length} items)</Link></li>
                     </ul>
                 </div>
 
