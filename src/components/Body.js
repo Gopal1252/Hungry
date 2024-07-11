@@ -62,7 +62,7 @@ const Body = () => {
                 <div className="w-[40rem] h-[4rem] text-lg border-2 border-[#e8e8e8] rounded-full shadow-md flex justify-between items-center px-5 my-2">
                     <input type="text" value={searchText} onChange={handleChange} className="searchBox w-[36rem] border-transparent focus:border-transparent focus:ring-0" placeholder="Search for restaurant, cuisine or a dish"></input>
                     <button onClick={handleSearch}><IoIosSearch className="text-3xl" /></button>
-                </div>
+                </div> 
             </div>
 
             <div className="fliter">
@@ -77,7 +77,7 @@ const Body = () => {
                 }}
                 >
                     Top Rated Restautants
-                </button>
+                </button> 
             </div>
             <div className="restaurant-continer flex flex-wrap justify-normal">
                 {isLoading && <CardSkeleton cards={9} />}

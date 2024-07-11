@@ -1,7 +1,9 @@
 import { GoStarFill } from "react-icons/go";
 import { CDN_URL } from "../utils/constants"; 
 
-const RestaurantCard = ({resData}) => {
+const RestaurantCard = ({resData}) => { 
+ 
+  // console.log(resData);
 
   const {name, cloudinaryImageId, cuisines, costForTwo, avgRating} = resData?.info
   const {slaString} = resData?.info.sla

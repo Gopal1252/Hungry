@@ -1,6 +1,6 @@
 import { useState } from "react";
 import logo from "../../public/images/logo.svg"; 
-import { PiShoppingCart } from "react-icons/pi";
+import { PiShoppingCart } from "react-icons/pi"; 
 import { CiUser } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
