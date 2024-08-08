@@ -2,7 +2,7 @@ import Skeleton ,  { SkeletonTheme } from "react-loading-skeleton"
  
 const CardSkeleton = ({cards}) => {
   return Array(cards)
-    .fill(0)
+    .fill(0) 
     .map((item,i) => (
         <div key={i} className="card-skeleton w-[25rem] h-[27rem] m-2 p-3 border-2 border-white rounded-2xl cursor-pointer">
             <SkeletonTheme>
@@ -12,5 +12,7 @@ const CardSkeleton = ({cards}) => {
         </div>
     ));
 }
+
+
 
 export default CardSkeleton;

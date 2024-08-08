@@ -1,4 +1,3 @@
-import CardSkeleton from "./CardSkeleton";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
@@ -7,6 +6,7 @@ import { LuDot } from "react-icons/lu";
 import { CiLocationOn } from "react-icons/ci";
 import { CiClock2 } from "react-icons/ci";
 import { useState } from "react";
+import Skeleton ,  { SkeletonTheme } from "react-loading-skeleton"
 
 
 const RestaurantMenu = () => {
@@ -18,8 +18,27 @@ const RestaurantMenu = () => {
     const [showIndex, setShowIndex] = useState(0);
 
 
-    if(resInfo === null) return <CardSkeleton />;
     // console.log(resInfo);
+    if(resInfo === null) return (
+        <div className="mt-5 grid grid-cols-6 sm:grid-cols-5">
+            <div className="col-start-2 col-span-4 sm:col-start-2 sm:col-span-3 px-3 py-5">
+                <div className="border-2 border-white rounded-2xl cursor-pointer">
+                    <SkeletonTheme>
+                        <Skeleton className="my-[3rem] h-[12rem]"/>
+                    </SkeletonTheme>
+                </div>
+                <div className="mt-5 border-2 border-white rounded-2xl cursor-pointer">
+                    <SkeletonTheme>
+                        <Skeleton className="my-[1rem] h-[3rem]"/>
+                        <Skeleton className="my-[1rem] h-[3rem]"/>
+                        <Skeleton className="my-[1rem] h-[3rem]"/>
+                        <Skeleton className="my-[1rem] h-[3rem]"/>
+                        <Skeleton className="my-[1rem] h-[3rem]"/>
+                    </SkeletonTheme>
+                </div>
+            </div>
+        </div>
+    )
 
     const { name, avgRating, totalRatingsString, sla, areaName, cuisines, cloudinaryImageId, costForTwoMessage} = resInfo?.cards[2]?.card?.card?.info;
     // const { itemCards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card;
@@ -31,7 +50,7 @@ const RestaurantMenu = () => {
     // console.log(resInfo);
     // console.log(itemCards);
 
-    return (
+    return ( 
         <div className="mt-5 grid grid-cols-6 sm:grid-cols-5">
             <div className="col-start-2 col-span-4 sm:col-start-2 sm:col-span-3 px-3 py-5">
 
