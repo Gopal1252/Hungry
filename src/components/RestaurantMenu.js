@@ -35,10 +35,10 @@ const RestaurantMenu = () => {
         <div className="mt-5 grid grid-cols-6 sm:grid-cols-5">
             <div className="col-start-2 col-span-4 sm:col-start-2 sm:col-span-3 px-3 py-5">
 
-                //Restaurant Name
+                {/* Restaurant Name */}
                 <h1 className="text-3xl font-bold mb-5">{name}</h1>
 
-                //Restaurant's Info
+                {/* Restaurant's Info */}
                 <div className="border-2 rounded-2xl p-5 shadow-xl mb-10">
                     <div className="flex flex-col md:flex-row text-lg md:text-xl font-bold">
                         <div className="flex">
@@ -65,7 +65,7 @@ const RestaurantMenu = () => {
                     </div>
                 </div>
 
-                //MENU
+                {/* MENU */}
                 <div className="text-center text-3xl font-bold mb-5">Menu</div>
 
                 {/* {Categories Accordion} */}

@@ -10,21 +10,29 @@ const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
     const [searchText,setSearchText] = useState("");
+    const [noResFound,setNoResFound] = useState("");
 
     // console.log(listOfRestaurants);
 
-    const handleSearch = () => {
-        const filteredList = listOfRestaurants.filter(
-            (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()) || res.info.cuisines.join(", ") .toLowerCase().includes(searchText.toLowerCase()) 
-        );
-
-        setFilteredRestaurants(filteredList);
+    const handleSearch = (searchText,listOfRestaurants) => {
+        if(searchText != ""){
+            const filteredList = listOfRestaurants.filter(
+                (res) => res?.info?.name?.toLowerCase()?.includes(searchText.toLowerCase()) || res.info.cuisines.join(", ") .toLowerCase().includes(searchText.toLowerCase()) 
+            );
+            setFilteredRestaurants(filteredList);
+            setNoResFound("");
+            if(filteredList?.length === 0) setNoResFound("No Restaurants Found!");
+        }
+        else{
+            setNoResFound("");
+            setFilteredRestaurants(listOfRestaurants);
+        }
     }
 
     const handleChange = (e) => {
         setSearchText(e.target.value);
+        handleSearch(e.target.value,listOfRestaurants);
     }
 
     useEffect(() => {
@@ -52,7 +60,7 @@ const Body = () => {
         return (
             <h1>
                 Looks like you are offline!!! Please check your internet connection
-            </h1>
+            </h1> 
         )
     }
 
@@ -60,8 +68,10 @@ const Body = () => {
         <div className="w-[80%] mx-auto my-5">
             <div className="flex justify-center m-5 search">
                 <div className="w-[40rem] h-[4rem] text-lg border-2 border-[#e8e8e8] rounded-full shadow-md flex justify-between items-center px-5 my-2">
-                    <input type="text" value={searchText} onChange={handleChange} className="searchBox w-[36rem] border-transparent focus:border-transparent focus:ring-0" placeholder="Search for restaurant, cuisine or a dish"></input>
-                    <button onClick={handleSearch}><IoIosSearch className="text-3xl" /></button>
+                    <input type="text" data-testid="searchInput" value={searchText} onChange={handleChange} className="searchBox w-[36rem] border-transparent focus:border-transparent focus:ring-0" placeholder="Search for restaurant, cuisine or a dish"></input>
+                    <button onClick={() => {
+                        handleSearch(searchText,listOfRestaurants);
+                    }} aria-label="searchBtn" data-testid="searchBtn"><IoIosSearch className="text-3xl"/></button>
                 </div> 
             </div>
 
@@ -79,8 +89,11 @@ const Body = () => {
                     Top Rated Restautants
                 </button> 
             </div>
+
+
             <div className="restaurant-continer flex flex-wrap justify-normal">
                 {isLoading && <CardSkeleton cards={9} />}
+                {noResFound && <div className="mx-auto my-auto"><p className="text-2xl text-[#fb5e87] font-semibold ">{noResFound}</p></div>}
                 { 
                     filteredRestaurants?.map((restaurant) => (
                         <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>

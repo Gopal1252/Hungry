@@ -1,5 +1,5 @@
 import Skeleton ,  { SkeletonTheme } from "react-loading-skeleton"
-
+ 
 const CardSkeleton = ({cards}) => {
   return Array(cards)
     .fill(0)
@@ -13,4 +13,4 @@ const CardSkeleton = ({cards}) => {
     ));
 }
 
-export default CardSkeleton
+export default CardSkeleton;
