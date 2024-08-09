@@ -10,7 +10,7 @@ const useRestaurantMenu = (resId) => {
     },[])
 
     const fetchData = async () => {
-        const data = await fetch(MENU_API + resId);
+        const data = await fetch(`https://hungry-proxy-server.onrender.com/menu?restaurantId=${resId}`);
         const json = await data.json();
         setResInfo(json.data);
     }
